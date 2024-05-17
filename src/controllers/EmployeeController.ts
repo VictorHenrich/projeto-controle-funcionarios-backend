@@ -77,20 +77,17 @@ export default class EmployeeController{
     }
 
     static async fetchEmployee(request: Request, response: Response){
-        // try{
-        //     const employeeListingService = new EmployeeListingService({
-        //         name: request.query.name,
-        //         office: request.query.office
-        //     });
+        try{
+            const employeeListingService = new EmployeeListingService();
 
-        //     const employees = await employeeListingService.execute();
+            const employees = await employeeListingService.execute();
 
-        //     return response.status(200).json(new ResponseSuccess(employees));
+            return response.status(200).json(new ResponseSuccess(employees));
 
-        // }catch(error){
-        //     return response
-        //                 .status(500)
-        //                 .json(new ResponseBadRequest("Failed to exclude employee!"));
-        // }
+        }catch(error){
+            return response
+                        .status(500)
+                        .json(new ResponseBadRequest("Failed to exclude employee!"));
+        }
     }
 }

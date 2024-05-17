@@ -10,7 +10,7 @@ export type EmployeeUpdate = IEmployeeModel;
 
 export type EmployeeGetting = Pick<IEmployeeModel, "id">;
 
-export type EmployeeFetching = Pick<IEmployeeModel, "name" | "office">;
+export type EmployeeFetching = void
 
 
 export default class EmployeeRepository 
@@ -22,15 +22,7 @@ export default class EmployeeRepository
     
 {
     async fetch(params: EmployeeFetching): Promise<IEmployeeModel[]> {
-        let filter: any = {};
-
-        if(params.name)
-            filter = {...filter, name: {$regex: params.name, $i: true}};
-
-        if(params.office)
-            filter = {...filter, office: {$regex: params.office, $i: true}};
-
-        return await Employee.find(filter);
+        return await Employee.find();
     }
 
     async get({ id : _id }: EmployeeGetting): Promise<IEmployeeModel | null> {
