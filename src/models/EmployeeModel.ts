@@ -14,6 +14,7 @@ export interface IEmployeeModel{
 const employeeSchema: mongoose.Schema = new mongoose.Schema({
     name: String,
     wage: Number,
+    office: String,
     birthday: Date,
     entryDate: Date,
     departureDate: Date

@@ -38,7 +38,7 @@ export default class EmployeeRepository
     }
 
     async create(params: EmployeeCreation): Promise<void> {
-        const employee = new Employee({...params});
+        const employee = new Employee(params);
 
         await employee.save();
     }

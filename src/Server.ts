@@ -1,4 +1,5 @@
 import express, { Express } from "express";
+import cors from "cors";
 import mongo from "mongoose";
 import router from "./Routes";
 
@@ -35,6 +36,8 @@ class HttpServer{
   }
 
   async start(){
+    this.app.use(cors());
+    
     this.app.use(express.json());
     
     this.app.use(router);
